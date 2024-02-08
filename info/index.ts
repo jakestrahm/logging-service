@@ -10,7 +10,7 @@ import config from './config'
 		const channel = await connection.createChannel();
 
 		// create exchange
-		await channel.assertExchange(config.rabbitMQ.exchange, "direct");
+		await channel.assertExchange(config.rabbitMQ.exchange, config.rabbitMQ.exchangeType);
 
 		// create queue
 		const q = await channel.assertQueue("infoQueue");

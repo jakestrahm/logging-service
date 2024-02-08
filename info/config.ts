@@ -1,7 +1,8 @@
 const config = {
 	rabbitMQ: {
 		url: 'amqp://localhost',
-		exchange: 'logExchange'
+		exchange: 'logExchange',
+		exchangeType: 'direct'
 	}
 }
 

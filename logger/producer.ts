@@ -3,6 +3,13 @@ import config from './config'
 
 export class Producer {
 	channel!: Channel;
+	exchangeType: string;
+	exchangeName: string;
+
+	constructor(exchangeName: string, exchangeType: string) {
+		this.exchangeType = exchangeType
+		this.exchangeName = exchangeName
+	}
 
 	async createChannel() {
 		// connect to rabbitmq
@@ -18,8 +25,7 @@ export class Producer {
 		}
 
 		//create exchange
-		const exchangeName = config.rabbitMQ.exchange
-		await this.channel.assertExchange(exchangeName, 'direct');
+		await this.channel.assertExchange(this.exchangeName, this.exchangeType);
 
 		//publish message
 		const logDetails = {
@@ -28,11 +34,11 @@ export class Producer {
 			dateTime: new Date(),
 		}
 		await this.channel.publish(
-			exchangeName,
+			this.exchangeName,
 			routingKey,
 			Buffer.from(JSON.stringify(logDetails))
 		)
-		console.log(`the new "${routingKey}" log has been sent to exchange "${exchangeName}"`)
+		console.log(`the new "${routingKey}" log has been sent to exchange "${this.exchangeName}"`)
 	}
 }
 
