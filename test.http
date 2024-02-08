@@ -1,0 +1,7 @@
+POST http://localhost:3000/sendLog
+Content-Type: application/json
+
+{
+	"logType": "error",
+	"message": "hello world!"
+}
