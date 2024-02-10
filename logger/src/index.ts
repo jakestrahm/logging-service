@@ -3,6 +3,7 @@ import Express from "express";
 
 const producer = new Producer("logExchange", "direct");
 const app = Express();
+const port = process.env.PORT || 8080
 
 app.use(Express.json())
 
@@ -11,6 +12,6 @@ app.post("/sendLog", async (req, res, _) => {
 	res.send();
 })
 
-app.listen(3000, () => {
+app.listen(port || 8080, () => {
 	console.log("servers up!")
 })

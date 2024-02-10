@@ -1,10 +1,11 @@
 {
-  "name": "info",
+  "name": "warninganderror",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "dev": "nodemon index.ts"
+    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,8 @@
     "@types/config": "^3.3.3",
     "amqplib": "^0.10.3",
     "config": "^3.3.11"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
   }
 }
